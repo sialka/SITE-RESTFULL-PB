@@ -33,9 +33,18 @@
 				const productList = document.querySelector('table');
 				productList.addEventListener('click', (event) => {					
 					event.preventDefault();
+					const btnExcluir = event.target;
 					
-					if (event.target.classList.contains('btn-excluir')){
-						console.log(event.target);
+					if (btnExcluir.classList.contains('btn-excluir')){
+						// console.log(event.target);
+						const url = btnExcluir.href;
+						// console.log(url);
+						fetch(url, {
+							method: 'DELETE'
+						}).then(function() {
+							// console.log('Deletou')
+							btnExcluir.parentNode.parentNode.remove();
+						})
 					}
 
 				})
