@@ -9,8 +9,10 @@ app.set('views', './src/views');
 app.get('/produtos', async(req, res) => {
 	const result = await request.get('http://localhost:3000/api/v1/products');
 	// console.log(JSON.parse(result).data);
+	const products = JSON.parse(result).data;
+	console.log(products);
 	// res.send('Olá');
-	res.render('products');
+	res.render('products', { products });
 
 });
 
