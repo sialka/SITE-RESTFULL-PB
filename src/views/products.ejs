@@ -8,26 +8,38 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 	</head>
 	<body>
-		<h1>List Products</h1>
-		
-		<table>
-			<thead>
-				<tr>
-					<th>Produto</th>
-					<th>Preço</th>
-					<th>&nbsp</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% products.forEach(function(product) { %>
+		<main class="container">
+			<h1>List Products</h1>		
+			<table class="table table-striped">
+				<thead class="thead-dark">
 					<tr>
-						<td><%= product.attributes.name %></td>
-						<td><%= product.attributes.price %></td>												
-						<td><a href="http://localhost:3000<%= product.links.self %>">Excluir</a></td>
+						<th>Produto</th>
+						<th>Preço</th>
+						<th>&nbsp</th>
 					</tr>
-				<% }) %>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<% products.forEach(function(product) { %>
+						<tr>
+							<td><%= product.attributes.name %></td>
+							<td><%= product.attributes.price %></td>												
+							<td><a class="btn btn-danger btn-excluir" href="http://localhost:3000<%= product.links.self %>">Excluir</a></td>
+						</tr>
+					<% }) %>
+				</tbody>
+			</table>
+		<main>
+			<script>
+				const productList = document.querySelector('table');
+				productList.addEventListener('click', (event) => {					
+					event.preventDefault();
+					
+					if (event.target.classList.contains('btn-excluir')){
+						console.log(event.target);
+					}
 
+				})
+				
+			</script>
 	</body>
 </html>
